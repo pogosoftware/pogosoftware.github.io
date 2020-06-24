@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+<div class="col col-lg-8 col-md-12">
+    {% for post in paginator.posts %}
+    <article class="article-card p-4">
+     <header class="article-card-header text-center">
+            <h1>{{ post.title }}</h1>
+        </header>
+        <div class="article-card-meta text-center">
+            <ul class="list-inline">
+                <li>{{ site.author }}</li>
+                <li>/</li>
+                <li>{{ post.date | date_to_string }}</li>
+                <li>/</li>
+                <li>{{ post.categories | join: ", " }}</li>
+            </ul>
+        </div>
+        <div class="article-card-content text-justify">
+            <p>Morem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                culpa qui officia deserunt mollit anim id est laborum. officia deserunt mollit anim id est laborum.
+            </p>
+            <a class="btn-read-more btn-outline-info" href="#">Czytaj dalej</a>
+        </div>
+    </article>
+  {% endfor %}
+
+  <!-- pagination -->
+  {% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+    {% else %}
+      <span>&laquo; Prev</span>
+    {% endif %}
+
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="webjeda">{{ page }}</span>
+      {% elsif page == 1 %}
+        <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+      {% else %}
+        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+    {% else %}
+      <span>Next &raquo;</span>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
