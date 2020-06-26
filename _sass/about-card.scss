@@ -1,0 +1,22 @@
+.about-card {
+    @include content-background;
+
+    & header {
+        margin-bottom: 16px;
+        text-align: center;
+
+        & h1 {
+            text-transform: uppercase;
+        }
+    }
+
+    & p {
+        text-align: justify;
+        padding-top: 1rem;
+    }
+
+    & img {
+        width: 100%;
+        height: 250px;
+    }
+}

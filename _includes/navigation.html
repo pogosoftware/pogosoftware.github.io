@@ -12,21 +12,18 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Strona główna <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">{{ site.data.navigation.menu.home }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Kursy</a>
+                    <a class="nav-link" href="#">{{ site.data.navigation.menu.courses }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">O mnie</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contact">Kontakt</a>
+                    <a class="nav-link" href="/about">{{ site.data.navigation.menu.about_me }}</a>
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                <button class="btn-search btn-outline-info my-2 my-sm-0" type="submit">Wyszukaj</button>
+                <button class="btn-search btn-outline-info my-2 my-sm-0" type="submit">{{ site.data.navigation.menu.search }}</button>
               </form>
             </div>
           </nav>

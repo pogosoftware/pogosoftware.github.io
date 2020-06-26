@@ -6,10 +6,10 @@ layout: default
 <div class="row mt-4 mb-4">
     <div class="col col-lg-8 col-md-12">
         {% for post in paginator.posts %}
-        <section class="article-card p-4">
-            <header class="article-card-header text-center">
+        <section class="post-card">
+            <header>
                 <h1>{{ post.title }}</h1>
-                <ul class="list-inline article-card-meta text-center">
+                <ul>
                     <li>{{ site.author }}</li>
                     <li>/</li>
                     <li>{{ post.date | date_to_string }}</li>
@@ -17,17 +17,18 @@ layout: default
                     <li>{{ post.categories | join: ", " }}</li>
                 </ul>
             </header>
-            <p class="article-card-content text-justify">Morem ipsum dolor sit amet, consectetur adipisicing elit, sed
+            <p>Morem ipsum dolor sit amet, consectetur adipisicing elit, sed
                 do eiusmod tempor incididunt ut labore
                 et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                 aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
                 culpa qui officia deserunt mollit anim id est laborum. officia deserunt mollit anim id est laborum.
             </p>
-            <a class="btn-read-more btn-outline-info" href="{{ post.url }}">Czytaj dalej</a>
+            <a class="btn-outline-info" href="{{ post.url }}">Czytaj dalej</a>
         </section>
         {% endfor %}
 
+        <section>
         {% if paginator.total_pages > 1 %}
             <nav aria-label="Pagination">
                 <ul class="pagination justify-content-center">
@@ -62,20 +63,17 @@ layout: default
                 </ul>
             </nav>
         {% endif %}
+        </section>
     </div>
 
     <!-- Aside pannel -->
     <aside class="col col-lg-4 d-none d-lg-block">
-        <div class="article-card p-4">
-            <header class="article-card-header text-center">
-                <h1 class="text-uppercase">O mnie</h1>
+        <section class="about-card">
+            <header>
+                <h1>O mnie</h1>
             </header>
-            <div class="article-card-content text-justify">
-                <img src="/assets/images/me.jpg" class="img-fluid me-img"
-                    alt="Przemysław Pogorzelec - zdjęcie profilowe">
-                <p class="pt-3">Niewielka porcja informacji o mnie: czym się interesuje o czym bede pisał itp.
-                </p>
-            </div>
-        </div>
+            <img src="/assets/images/me.jpg" class="img-fluid image" alt="Przemysław Pogorzelec - zdjęcie profilowe">
+            <p>Niewielka porcja informacji o mnie: czym się interesuje o czym bede pisał itp.</p>
+        </section>
     </aside>
 </div>
