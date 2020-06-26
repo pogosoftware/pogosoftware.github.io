@@ -7,6 +7,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: ""
 url: "https://pogosoftware.net"
 
+permalink: /:categories/:title/
+
 plugins:
   - jekyll-feed
   - jekyll-paginate
@@ -23,15 +25,13 @@ kramdown:
     # Use existing pygments syntax highlighting css
     css_class: 'highlight'
 
-sass:
-  style: :compressed
+### PAGINATION
+paginate: 3
+paginate_path: "/page:num/"
 
 include: 
   - _pages
   - _posts
-
-paginate: 3
-paginate_path: "/page:num/"
 
 # Exclude these files from your production _site
 exclude:

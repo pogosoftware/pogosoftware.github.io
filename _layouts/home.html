@@ -1,0 +1,81 @@
+---
+layout: default
+---
+
+<!-- Main layout -->
+<div class="row mt-4 mb-4">
+    <div class="col col-lg-8 col-md-12">
+        {% for post in paginator.posts %}
+        <section class="article-card p-4">
+            <header class="article-card-header text-center">
+                <h1>{{ post.title }}</h1>
+                <ul class="list-inline article-card-meta text-center">
+                    <li>{{ site.author }}</li>
+                    <li>/</li>
+                    <li>{{ post.date | date_to_string }}</li>
+                    <li>/</li>
+                    <li>{{ post.categories | join: ", " }}</li>
+                </ul>
+            </header>
+            <p class="article-card-content text-justify">Morem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                culpa qui officia deserunt mollit anim id est laborum. officia deserunt mollit anim id est laborum.
+            </p>
+            <a class="btn-read-more btn-outline-info" href="{{ post.url }}">Czytaj dalej</a>
+        </section>
+        {% endfor %}
+
+        {% if paginator.total_pages > 1 %}
+            <nav aria-label="Pagination">
+                <ul class="pagination justify-content-center">
+                {% if paginator.previous_page %}
+                    <li class="page-item">
+                {% else %}
+                    <li class="page-item disabled">
+                {% endif %}
+                        <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" tabindex="-1">Poprzednia</a>
+                    </li>
+
+                {% for page in (1..paginator.total_pages) %}
+                    <li class="page-item">
+                {% if page == paginator.page %}
+                    <a class="page-link" href="#">{{ page }}</a>
+                {% elsif page == 1 %}
+                    <a class="page-link" href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+                {% else %}
+                    <a class="page-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+                {% endif %}
+                    </li>
+                {% endfor %}
+
+
+                {% if paginator.next_page %}
+                    <li class="page-item">
+                {% else %}
+                    <li class="page-item disabled">
+                {% endif %}
+                    <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Następna</a>
+                </li>
+                </ul>
+            </nav>
+        {% endif %}
+    </div>
+
+    <!-- Aside pannel -->
+    <aside class="col col-lg-4 d-none d-lg-block">
+        <div class="article-card p-4">
+            <header class="article-card-header text-center">
+                <h1 class="text-uppercase">O mnie</h1>
+            </header>
+            <div class="article-card-content text-justify">
+                <img src="/assets/images/me.jpg" class="img-fluid me-img"
+                    alt="Przemysław Pogorzelec - zdjęcie profilowe">
+                <p class="pt-3">Niewielka porcja informacji o mnie: czym się interesuje o czym bede pisał itp.
+                </p>
+            </div>
+        </div>
+    </aside>
+</div>
